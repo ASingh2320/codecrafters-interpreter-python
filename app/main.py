@@ -40,6 +40,8 @@ def main():
                 print("SEMICOLON ; null")
             elif c == '*':
                 print("STAR * null")
+            else:
+                print(f"[line 1] Error: Unexpected character: {c}", file=sys.stderr)
         print("EOF  null")
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
