@@ -19,28 +19,38 @@ def main():
 
     # Uncomment this block to pass the first stage
     if file_contents:
+        output = []
+        error_output = []
         for c in file_contents:
             if c == '(':
-                print("LEFT_PAREN ( null")
+                output.append("LEFT_PAREN ( null")
             elif c == ')':
-                print("RIGHT_PAREN ) null")
+                output.append("RIGHT_PAREN ) null")
             elif c == '{':
-                print("LEFT_BRACE { null")
+                output.append("LEFT_BRACE { null")
             elif c == '}':
-                print("RIGHT_BRACE } null")
+                output.append("RIGHT_BRACE } null")
             elif c == ',':
-                print("COMMA , null")
+                output.append("COMMA , null")
             elif c == '.':
-                print("DOT . null")
+                output.append("DOT . null")
             elif c == '-':
-                print("MINUS - null")
+                output.append("MINUS - null")
             elif c == '+':
-                print("PLUS + null")
+                output.append("PLUS + null")
             elif c == ';':
-                print("SEMICOLON ; null")
+                output.append("SEMICOLON ; null")
             elif c == '*':
-                print("STAR * null")
-        print("EOF  null")
+                output.append("STAR * null")
+            else:
+                error_output.append(f"[line 1] Error: Unexpected character: {c}")
+        output.append("EOF  null")
+        
+        for err_out in error_output:
+            print(err_out, file=sys.stderr)
+        for out in output:
+            print(out)
+            
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
 
