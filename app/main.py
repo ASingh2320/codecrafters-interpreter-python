@@ -19,6 +19,7 @@ def main():
 
     # Uncomment this block to pass the first stage
     if file_contents:
+        err_exit = False
         output = []
         error_output = []
         for c in file_contents:
@@ -47,10 +48,12 @@ def main():
         output.append("EOF  null")
         
         for err_out in error_output:
+            err_exit = True
             print(err_out, file=sys.stderr)
         for out in output:
             print(out)
-            
+        if err_exit:
+            sys.exit(65)            
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
 
