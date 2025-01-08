@@ -22,7 +22,9 @@ def main():
         err_exit = False
         output = []
         error_output = []
-        for c in file_contents:
+        i = 0
+        while i < len(file_contents):
+            c = file_contents[i]
             if c == '(':
                 output.append("LEFT_PAREN ( null")
             elif c == ')':
@@ -43,8 +45,15 @@ def main():
                 output.append("SEMICOLON ; null")
             elif c == '*':
                 output.append("STAR * null")
+            elif c == '=':
+                if i < len(file_contents) and file_contents[i + 1] == '=':
+                    i += 1
+                    output.append("EQUAL_EQUAL == null")
+                else:
+                     output.append("EQUAL = null")
             else:
                 error_output.append(f"[line 1] Error: Unexpected character: {c}")
+            i += 1
         output.append("EOF  null")
         
         for err_out in error_output:
