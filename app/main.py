@@ -51,6 +51,12 @@ def main():
                     output.append("EQUAL_EQUAL == null")
                 else:
                      output.append("EQUAL = null")
+            elif c == '!':
+                if i < len(file_contents) - 1 and file_contents[i + 1] == '=':
+                    i += 1
+                    output.append("BANG_EQUAL != null")
+                else:
+                     output.append("BANG ! null")
             else:
                 error_output.append(f"[line 1] Error: Unexpected character: {c}")
             i += 1
