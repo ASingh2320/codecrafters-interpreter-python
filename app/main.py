@@ -46,7 +46,7 @@ def main():
             elif c == '*':
                 output.append("STAR * null")
             elif c == '=':
-                if i < len(file_contents) and file_contents[i + 1] == '=':
+                if i < len(file_contents) - 1 and file_contents[i + 1] == '=':
                     i += 1
                     output.append("EQUAL_EQUAL == null")
                 else:
